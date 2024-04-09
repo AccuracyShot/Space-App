@@ -1,10 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 const EstilosGlobais = createGlobalStyle`
+
 body {
     margin: 0;
-    padding: 0;
     font-family: 'Roboto', sans-serif;
+    padding: 0;
     background: linear-gradient(174.61deg, #041833 4.16%, #04244F, #154580 96.76%);
     color: #fff;
 }
