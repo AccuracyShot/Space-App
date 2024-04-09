@@ -6,6 +6,7 @@ const ItemListaEstilizado = styled.li`
     cursor: pointer;
     color: ${ props => props.$ativo ? '#7B78E5' : '#D9D9D9' };
     gap: 22px;
+    margin: 16px 0 16px 20px;
     align-items: center;
     display: flex;
 `

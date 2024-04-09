@@ -3,10 +3,11 @@ import { styled } from "styled-components";
 const CampoDeTextoEstilizado = styled.input`
 /* Dimensões e borda */
 width: 500px; /* Ajuste a largura conforme necessário */
-height: 50px;
+height: 40px;
 border: none;
 border-radius: 12px;
 padding: 10px 20px;
+margin-right: 10px;
 /* Fonte */
 font-size: 16px;
 font-family: sans-serif;
