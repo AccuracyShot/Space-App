@@ -40,7 +40,7 @@ const Tags = () => {
             <TituloEstilizado>Busque por Tags: </TituloEstilizado>
                
                    {tags.map((tag, index) => {
-               return <TagsEstilizadas key={index}>{tag.titulo}</TagsEstilizadas>
+                        return <TagsEstilizadas key={index}>{tag.titulo}</TagsEstilizadas>
                    })}
         </Container>
     </div>
