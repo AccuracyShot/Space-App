@@ -1,49 +1,47 @@
-import styled from "styled-components";
-import tags from "./tags.json";
+import { styled } from 'styled-components';
+import tags from './tags.json'
 
-const TagsEstilizadas = styled.button` 
-    background-color: #53505e;
-    color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
-    margin-right: 10px;
-    font-size: 16px;
-    font-family: sans-serif;
+const TagsContainer = styled.section`
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin-top: 56px;
+`
+
+const TagTitulo = styled.h3`
+    color: #D9D9D9;
+    font-size: 24px;
+    margin: 0;
+`;
+
+const Tag = styled.button`
+    font-size: 24px;
+    color: #FFFFFF;
+    background: rgba(217, 217, 217, 0.3);
+    border-radius: 10px;
     cursor: pointer;
-    /* box-shadow: 0 0 5px 0px #c367e7, 0 0 10px 0px #430bd2; */
-    transition: all 0.3s;
+    transition: background-color 0.3s ease;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
     &:hover {
-        transform: scale(1.1);
-        background-color: #c367e7;
-    }
-    &:active {
-        transform: scale(1);
+      border-color: #C98CF1;
     }
 `
 
-const TituloEstilizado = styled.p`
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-`
-
-const Container = styled.div`
+const Div = styled.div`
     display: flex;
     gap: 24px;
-    flex-grow: 1;
+    justify-content: end;
 `
 
 const Tags = () => {
-    return <div>
-        <Container>
-            <TituloEstilizado>Busque por Tags: </TituloEstilizado>
-               
-                   {tags.map((tag, index) => {
-                        return <TagsEstilizadas key={index}>{tag.titulo}</TagsEstilizadas>
-                   })}
-        </Container>
-    </div>
-   }
-   
-   export default Tags;
+    return <TagsContainer>
+        <TagTitulo>Busque por tags:</TagTitulo>
+        <Div>
+            {tags.map(tag => <Tag key={tag.id}>{tag.titulo}</Tag>)}
+        </Div>
+    </TagsContainer>
+}
+
+export default Tags

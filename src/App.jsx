@@ -9,67 +9,63 @@ import { useState } from "react";
 import fotos from "./components/Galeria/fotos.json";
 import ModalZoom from "./components/ModalZoom";
 
-function App() {
+const FundoGradiente = styled.div`
+  background: linear-gradient(
+    174.61deg,
+    #041833 4.16%,
+    #04244f 48%,
+    #154580 96.76%
+  );
+  width: 100%;
+  min-height: 100vh;
+`;
 
-  const FundoGradiente = styled.div`
-    background: linear-gradient(
-      174.61deg,
-      #041833 4.16%,
-      #04244f,
-      #154580 96.76%
-    );
-    width: 100%;
-    min-height: 100vh;
-  `;
+const AppContainer = styled.div`
+  width: 1440px;
+  margin: 0 auto;
+  max-width: 100%;
+`;
 
-  const AppContainer = styled.div`
-    width: 1440px;
-    margin: 0 auto;
-    max-width: 100%;
-  `;
+const MainContainer = styled.main`
+  display: flex;
+  gap: 24px;
+`;
 
-  const MainContainer = styled.div`
-    display: flex;
-    gap: 24px;
-  `;
+const ConteudoGaleria = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
 
-  const ConteudoDaGaleria = styled.div`
-    display: flex;
-    gap: 24px;
-    flex-grow: 1;
-    flex-direction: column;
-  `
+const App = () => {
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
 
-
-const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
-const [fotoSelecionada, setFotoSelecionada] = useState(null);
   return (
-    <>
-      <FundoGradiente>
-        <EstilosGlobais />
+    <FundoGradiente>
+      <EstilosGlobais />
         <AppContainer>
           <Cabecalho />
           <MainContainer>
             <BarraLateral />
-            <ConteudoDaGaleria>
+            <ConteudoGaleria>
               <Banner
                 texto="A galeria mais completa de fotos do espaço!"
                 backgroundImage={bannerBackground}
               />
-              <Galeria 
-                aoFotoSelecionada={foto => setFotoSelecionada(foto)} 
-                fotos={fotosDaGaleria} 
+              <Galeria
+                aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+                fotos={fotosDaGaleria}
               />
-            </ConteudoDaGaleria>
+            </ConteudoGaleria>
           </MainContainer>
         </AppContainer>
-        <ModalZoom 
-        foto={fotoSelecionada}
-        aoFechar={() => setFotoSelecionada(null)}
+        <ModalZoom
+          foto={fotoSelecionada}
+          aoFechar={() => setFotoSelecionada(null)}
         />
-      </FundoGradiente>
-    </>
+    </FundoGradiente>
   );
-}
+};
 
 export default App;

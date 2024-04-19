@@ -1,41 +1,44 @@
-import Titulo from "../Titulo";
-import Populares from "./Populares/index.jsx";
-import Tags from "./Tags/index.jsx";
-import styled from "styled-components";
-import Imagem from "./Imagem/index.jsx";
+import { styled } from "styled-components"
+import Titulo from "../Titulo"
+import Tags from "./Tags"
+import Populares from "./Populares"
+import Imagem from "./Imagem"
 
 const GaleriaContainer = styled.div`
     display: flex;
-    flex-wrap: wrap;
+    gap: 24px;
 `
 
 const SecaoFluida = styled.section`
-    flex-wrap: wrap;
-    display: flex;
-    //gap: 50px;
+    flex-grow: 1;
 `
 
-
+const ImagensContainer = styled.section`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+`
 
 const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
     return (
-            <>
-                <Tags />
-                <GaleriaContainer>
-                <Titulo>Navegue pela Galeria</Titulo>
-                    <div style={{ display: 'flex'}}>
-                        <SecaoFluida>
-                        {fotos.map((foto, index) => 
-                            <Imagem 
+        <>
+            <Tags />
+            <GaleriaContainer>
+                <SecaoFluida>
+                    <Titulo>Navegue pela galeria</Titulo>
+                    <ImagensContainer>
+                        {fotos.map(foto => <Imagem 
                             aoZoomSolicitado={aoFotoSelecionada}
-                            key={index} 
-                            foto={foto} />)}
-                        <Populares />
-                        </SecaoFluida>
-                    </div>
-                </GaleriaContainer>
-            </>
-    );
+                            key={foto.id} 
+                            foto={foto} />)
+                        }
+                    </ImagensContainer>
+                </SecaoFluida>
+                <Populares />
+            </GaleriaContainer>
+        </>
+    )
 }
 
-export default Galeria;
+export default Galeria

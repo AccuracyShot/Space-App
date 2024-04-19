@@ -1,47 +1,32 @@
-import styled from "styled-components";
+import { styled } from "styled-components"
 
-const ImagemContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    //gap: 16px;
-    justify-content: center;
-    align-items: center;
-    //padding: 16px;
-    border-radius: 12px;
-`
-
-
-const FigureEstiliziado = styled.figure`
-    position: relative;
+const Figure = styled.figure`
+    width: ${props => props.$expandida ? '90%' : '460px'};
+    max-width: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    padding: 8px;
-    background-color: transparent;
-`
-
-const ImagemEstilizada = styled.img`
-    width: 100%;
-    max-width: 100%;
-    height: 300px;
-    border-radius: 12px 12px 0px 0px;
-`   
-
-const FigCaptionEstilizado = styled.figcaption`
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    background-color: #110f2b;
-    border-radius: 0px 0px 12px 12px;
-    align-items: center;
-`
-
-const FooterEstilizado = styled.footer`
-    display: flex;
-    gap: 8px;
-    justify-content: space-between;
-    align-items: center;
+    & > img {
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+    }
+    figcaption {
+        background-color: #001634;
+        border-radius: 0px 0px 20px 20px;
+        color: white;
+        box-sizing: border-box;
+        padding: 12px;
+        h3 {
+            font-family: 'GandhiSansBold';
+        }
+        h4 {
+            flex-grow: 1;
+        }
+        h3, h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+    }
 `
 
 const BotaoEstilizado = styled.button`
@@ -63,33 +48,28 @@ const BotaoEstilizado = styled.button`
     }
 `
 
-const TextoEstilizado = styled.h3`
-    color: #ffffff;
-    font-size: 16px;
-    font-family: sans-serif;
+const Rodape = styled.footer`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `
 
-const Imagem = ({foto, expandida = false, aoZoomSolicitado }) => {
-    return (
-        <ImagemContainer>
-            <FigureEstiliziado $expandida={expandida} id={`foto-${foto.id}`}>
-                <ImagemEstilizada src={foto.path} alt={foto.titulo} />
-                <FigCaptionEstilizado>
-                    <TextoEstilizado>{foto.titulo}</TextoEstilizado>
-                    <FooterEstilizado>
-                        <p>{foto.descricao}</p>
-                        <BotaoEstilizado>
-                            <img src="/icones/favorite.svg" alt="Botão de curtir" />
-                        </BotaoEstilizado>
-                        {!expandida && <BotaoEstilizado aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
-                            <img src="/icones/maximize.svg" alt="Botão de maximizar" />
-                        </BotaoEstilizado>}
-                    </FooterEstilizado>
-                </FigCaptionEstilizado>
-            </FigureEstiliziado>
-        </ImagemContainer>
-        
-    )
+const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
+    return (<Figure $expandida={expandida} id={`foto-${foto.id}`}>
+        <img src={foto.path} alt={foto.alt} />
+        <figcaption>
+            <h3>{foto.titulo}</h3>
+            <Rodape>
+                <h4>{foto.fonte}</h4>
+                <BotaoEstilizado>
+                    <img src="/icones/favorite.svg" alt="Icone de favorito" />
+                </BotaoEstilizado>
+                {!expandida && <BotaoEstilizado aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
+                    <img src="/icones/maximize.svg" alt="Icone de expandir" />
+                </BotaoEstilizado>}
+            </Rodape>
+        </figcaption>
+    </Figure>)
 }
 
 export default Imagem;
