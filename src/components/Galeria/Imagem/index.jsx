@@ -78,10 +78,10 @@ const Imagem = ({foto, expandida = false, aoZoomSolicitado }) => {
                     <FooterEstilizado>
                         <p>{foto.descricao}</p>
                         <BotaoEstilizado>
-                            Favotito
+                            <img src="/icones/favorite.svg" alt="Botão de curtir" />
                         </BotaoEstilizado>
                         {!expandida && <BotaoEstilizado aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
-                            Expandir
+                            <img src="/icones/maximize.svg" alt="Botão de maximizar" />
                         </BotaoEstilizado>}
                     </FooterEstilizado>
                 </FigCaptionEstilizado>
