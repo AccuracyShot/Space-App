@@ -7,6 +7,7 @@ import Banner from "./components/Banner";
 import Galeria from "./components/Galeria";
 import { useState } from "react";
 import fotos from "./components/Galeria/fotos.json";
+import ModalZoom from "./components/ModalZoom";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
     flex-direction: column;
   `
 const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
+const [fotoSelecionada, setFotoSelecionada] = useState(null);
   return (
     <>
       <FundoGradiente>
@@ -52,10 +54,14 @@ const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
               texto="A galeria mais completa de fotos do espaço!"
               backgroundImage={bannerBackground}
             />
-            <Galeria fotos={fotosDaGaleria} />
+            <Galeria 
+              aoFotoSelecionada={foto => setFotoSelecionada(foto)} 
+              fotos={fotosDaGaleria} 
+            />
             </ConteudoDaGaleria>
           </MainContainer>
         </AppContainer>
+        <ModalZoom foto={fotoSelecionada} />
       </FundoGradiente>
     </>
   );

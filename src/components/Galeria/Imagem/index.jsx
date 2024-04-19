@@ -68,17 +68,21 @@ const TextoEstilizado = styled.h3`
     font-family: sans-serif;
 `
 
-const Imagem = ({foto}) => {
+const Imagem = ({foto, expandida = false, aoZoomSolicitado }) => {
     return (
         <ImagemContainer>
-            <FigureEstiliziado>
+            <FigureEstiliziado $expandida={expandida} id={`foto-${foto.id}`}>
                 <ImagemEstilizada src={foto.path} alt={foto.titulo} />
                 <FigCaptionEstilizado>
                     <TextoEstilizado>{foto.titulo}</TextoEstilizado>
                     <FooterEstilizado>
                         <p>{foto.descricao}</p>
-                        <BotaoEstilizado>Favotito</BotaoEstilizado>
-                        <BotaoEstilizado>Expandir</BotaoEstilizado>
+                        <BotaoEstilizado>
+                            Favotito
+                        </BotaoEstilizado>
+                        {!expandida && <BotaoEstilizado aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
+                            Expandir
+                        </BotaoEstilizado>}
                     </FooterEstilizado>
                 </FigCaptionEstilizado>
             </FigureEstiliziado>
