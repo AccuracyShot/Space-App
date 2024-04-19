@@ -1,7 +1,15 @@
 import styled from "styled-components";
 
-const GaleriaContainer = styled.div`
+const ImagemContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    background-color: #110f2b;
+    border-radius: 12px;
+    box-shadow: 0px 0px 12px 0px #000000;
 `
 
 
@@ -10,7 +18,7 @@ const FigureEstiliziado = styled.figure`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
     padding: 8px;
     background-color: transparent;
 `
@@ -62,7 +70,7 @@ const TextoEstilizado = styled.h3`
 
 const Imagem = ({foto}) => {
     return (
-        <GaleriaContainer>
+        <ImagemContainer>
             <FigureEstiliziado>
                 <ImagemEstilizada src={foto.path} alt={foto.titulo} />
                 <FigCaptionEstilizado>
@@ -74,7 +82,7 @@ const Imagem = ({foto}) => {
                     </FooterEstilizado>
                 </FigCaptionEstilizado>
             </FigureEstiliziado>
-        </GaleriaContainer>
+        </ImagemContainer>
         
     )
 }

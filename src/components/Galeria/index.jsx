@@ -6,10 +6,13 @@ import Imagem from "./Imagem/index.jsx";
 
 const GaleriaContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
 `
 
 const SecaoFluida = styled.section`
-    flex-grow: 1;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 50px;
 `
 
 
@@ -19,12 +22,15 @@ const Galeria = ({ fotos = [] }) => {
         <div>
             <>
                 <Tags />
+                <Titulo>Navegue pela Galeria</Titulo>
                 <GaleriaContainer>
-                    <SecaoFluida>
-                    <Titulo>Navegue pela Galeria</Titulo>
-                    {fotos.map((foto, index) => <Imagem key={index} foto={foto} />)}
-                    </SecaoFluida>
-                    <Populares />
+                
+                    <div>
+                        <SecaoFluida>
+                        {fotos.map((foto, index) => <Imagem key={index} foto={foto} />)}
+                        </SecaoFluida>
+                        <Populares />
+                    </div>
                 </GaleriaContainer>
             </>
         </div>
