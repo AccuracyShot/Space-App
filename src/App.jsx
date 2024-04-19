@@ -39,6 +39,8 @@ function App() {
     flex-grow: 1;
     flex-direction: column;
   `
+
+
 const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
 const [fotoSelecionada, setFotoSelecionada] = useState(null);
   return (
@@ -50,18 +52,21 @@ const [fotoSelecionada, setFotoSelecionada] = useState(null);
           <MainContainer>
             <BarraLateral />
             <ConteudoDaGaleria>
-            <Banner
-              texto="A galeria mais completa de fotos do espaço!"
-              backgroundImage={bannerBackground}
-            />
-            <Galeria 
-              aoFotoSelecionada={foto => setFotoSelecionada(foto)} 
-              fotos={fotosDaGaleria} 
-            />
+              <Banner
+                texto="A galeria mais completa de fotos do espaço!"
+                backgroundImage={bannerBackground}
+              />
+              <Galeria 
+                aoFotoSelecionada={foto => setFotoSelecionada(foto)} 
+                fotos={fotosDaGaleria} 
+              />
             </ConteudoDaGaleria>
           </MainContainer>
         </AppContainer>
-        <ModalZoom foto={fotoSelecionada} />
+        <ModalZoom 
+        foto={fotoSelecionada}
+        aoFechar={() => setFotoSelecionada(null)}
+        />
       </FundoGradiente>
     </>
   );
