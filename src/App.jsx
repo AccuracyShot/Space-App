@@ -42,33 +42,50 @@ const App = () => {
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
 
   const aoAlternarFavorito = (foto) => {
-        console.log(foto)
-  }
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita,
+      });
+    }
+    setFotosDaGaleria(
+      fotosDaGaleria.map((fotosDaGaleria) => {
+        return {
+          ...fotosDaGaleria,
+          favorita:
+            fotosDaGaleria.id === foto.id
+              ? !foto.favorita
+              : fotosDaGaleria.favorita,
+        };
+      })
+    );
+  };
 
   return (
     <FundoGradiente>
       <EstilosGlobais />
-        <AppContainer>
-          <Cabecalho />
-          <MainContainer>
-            <BarraLateral />
-            <ConteudoGaleria>
-              <Banner
-                texto="A galeria mais completa de fotos do espaço!"
-                backgroundImage={bannerBackground}
-              />
-              <Galeria
-                aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
-                aoAlternarFavorito={aoAlternarFavorito}
-                fotos={fotosDaGaleria}
-              />
-            </ConteudoGaleria>
-          </MainContainer>
-        </AppContainer>
-        <ModalZoom
-          foto={fotoSelecionada}
-          aoFechar={() => setFotoSelecionada(null)}
-        />
+      <AppContainer>
+        <Cabecalho />
+        <MainContainer>
+          <BarraLateral />
+          <ConteudoGaleria>
+            <Banner
+              texto="A galeria mais completa de fotos do espaço!"
+              backgroundImage={bannerBackground}
+            />
+            <Galeria
+              aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+              aoAlternarFavorito={aoAlternarFavorito}
+              fotos={fotosDaGaleria}
+            />
+          </ConteudoGaleria>
+        </MainContainer>
+      </AppContainer>
+      <ModalZoom
+        aoAlternarFavorito={aoAlternarFavorito}
+        foto={fotoSelecionada}
+        aoFechar={() => setFotoSelecionada(null)}
+      />
     </FundoGradiente>
   );
 };
