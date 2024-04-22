@@ -1,45 +1,42 @@
-import { styled } from "styled-components";
+import { styled } from "styled-components"
+import search from '/images/search.svg'
 
-const CampoDeTextoEstilizado = styled.input`
-/* Dimensões e borda */
-width: 500px; /* Ajuste a largura conforme necessário */
-height: 40px;
-border: none;
-border-radius: 12px;
-padding: 10px 20px;
-margin-right: 10px;
-/* Fonte */
-font-size: 16px;
-font-family: sans-serif;
-color: #ffffff;
-/* Background */
-background-color: transparent;
-background-image: url('/images/search.svg');
-background-repeat: no-repeat;
-background-position: 95% 50%;
-border: 2px solid #800080;
-box-shadow: 0 0 5px 0px #c367e7, 0 0 10px 0px #430bd2;
+const ContainerEstilizado = styled.div`
+    position: relative;
+    display: inline-block;
+`;
 
-/* Placeholder */
-&::placeholder {
-color: #ffffff;
-font-weight: bold;
-}
 
-&:focus {
-outline: none;
-}
-
+const CampoTextoEstilizado = styled.input`
+    height: 56px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: #C98CF1;
+    background: transparent;
+    box-sizing: border-box;
+    width: 566px;
+    color: #D9D9D9;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
 `
 
-const CampoDeTexto = () => {
+const IconeLupa = styled.img`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+`;
+
+const CampoDeTexto = (props) => {
     return (
-        <CampoDeTextoEstilizado type="text" placeholder="O que você procura?" />
-    );
+        <ContainerEstilizado>
+            <CampoTextoEstilizado {...props} />
+            <IconeLupa src={search} alt="ícone de lupa" />
+        </ContainerEstilizado>
+    )
 }
 
-export default CampoDeTexto;
-
-
-
-
+export default CampoDeTexto

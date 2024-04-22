@@ -1,16 +1,11 @@
-import styled from "styled-components";
-import ItemNavegacao from "./ItemNavegacao/index.jsx";
+import { styled } from "styled-components"
+import ItemNavegacao from "./ItemNavegacao"
 
 const ListaEstilizada = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 250px;
-    a {
-        text-decoration: none;
-        color: #ffffff;
-        font-size: 16px;
-    }
+    width: 236px;
 `
 
 const BarraLateral = () => {
@@ -55,4 +50,4 @@ const BarraLateral = () => {
     )
 }
 
-export default BarraLateral;
+export default BarraLateral

@@ -1,4 +1,5 @@
 import { styled } from "styled-components"
+import BotaoIcone from "../../BotaoIcone"
 
 const Figure = styled.figure`
     width: ${props => props.$expandida ? '90%' : '460px'};
@@ -29,25 +30,6 @@ const Figure = styled.figure`
     }
 `
 
-const BotaoEstilizado = styled.button`
-    background-color: #53505e;
-    color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-family: sans-serif;
-    cursor: pointer;
-    transition: all 0.3s;
-    &:hover {
-        transform: scale(1.1);
-        background-color: #c367e7;
-    }
-    &:active {
-        transform: scale(1);
-    }
-`
-
 const Rodape = styled.footer`
     display: flex;
     justify-content: space-between;
@@ -56,7 +38,12 @@ const Rodape = styled.footer`
 
 const Imagem = ({ foto, expandida = false, aoZoomSolicitado, aoAlternarFavorito }) => {
 
-    const iconeFavorito = foto.favorita ? "/icones/favorite-active.svg" : "/icones/favorite.svg";
+    // const iconeFavorito = foto.favorita ? '/icones/favorito-ativo.png' : '/icones/favorito.png'
+    let iconeFavorito = '/icones/favorite.svg';
+    if (foto.favorita) {
+        iconeFavorito = '/icones/favorite-active.svg'
+    }
+
 
     return (<Figure $expandida={expandida} id={`foto-${foto.id}`}>
         <img src={foto.path} alt={foto.alt} />
@@ -64,15 +51,15 @@ const Imagem = ({ foto, expandida = false, aoZoomSolicitado, aoAlternarFavorito 
             <h3>{foto.titulo}</h3>
             <Rodape>
                 <h4>{foto.fonte}</h4>
-                <BotaoEstilizado onClick={() => aoAlternarFavorito(foto)}>
+                <BotaoIcone onClick={() => aoAlternarFavorito(foto)}>
                     <img src={iconeFavorito} alt="Icone de favorito" />
-                </BotaoEstilizado>
-                {!expandida && <BotaoEstilizado aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
+                </BotaoIcone>
+                {!expandida && <BotaoIcone aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
                     <img src="/icones/maximize.svg" alt="Icone de expandir" />
-                </BotaoEstilizado>}
+                </BotaoIcone>}
             </Rodape>
         </figcaption>
     </Figure>)
 }
 
-export default Imagem;
+export default Imagem
